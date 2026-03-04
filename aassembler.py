@@ -42,3 +42,21 @@ def Binary(num,bits):
      while len(B)<bits:
           B="0"+B
      return B
+def assembler(input_file, output_file):
+    PC=0
+    labels={}
+    instructions=[] 
+    f=open(input_file,"r")
+    lines=f.readlines()
+    for line in lines:
+        line=line.strip()
+        if line=="": 
+            continue
+        if ":" in line: 
+            label,Inst=line.split(":") 
+            labels[label.strip()]=PC
+            line=Inst.strip() 
+            if line=="": 
+                continue 
+        instructions.append(line) 
+        PC=PC+4
