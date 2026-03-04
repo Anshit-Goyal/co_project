@@ -1,0 +1,11 @@
+addi s2,zero,10
+addi s3,zero,1
+
+loop: add s1,s2,s3
+sub t0,s1,s3
+lw t1,0(sp)
+sw t1,4(sp)
+beq s1,s2,loop
+lui s4,4096
+jal ra,loop
+beq zero,zero,0
