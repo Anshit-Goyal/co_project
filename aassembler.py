@@ -135,17 +135,22 @@ def assembler(input_file, output_file):
         inst_type,funct7,funct3,opc=opcode[Ist_1]
         
         if inst_type=="R":
-            R_type(arr,funct7,funct3,opc)
+            binary=R_type(arr,funct7,funct3,opc)
         elif inst_type=="I":
-            I_type(arr,funct7,funct3,opc)
+            binary=I_type(arr,funct7,funct3,opc)
         elif inst_type=="S":
-            S_type(arr,funct7,funct3,opc)
+            binary=S_type(arr,funct7,funct3,opc)
         elif inst_type=="B":
-            B_type(arr,funct7,funct3,opc,labels,PC)
+            binary=B_type(arr,funct7,funct3,opc,labels,PC)
         elif inst_type=="J":
-            J_type(arr,funct7,funct3,opc,labels,PC)
+            binary=J_type(arr,funct7,funct3,opc,labels,PC)
         elif inst_type=="U":
-            U_type(arr,funct7,funct3,opc)
+           binary=U_type(arr,funct7,funct3,opc)
+        output.append(binary)
+        PC=PC+4
+     with open(output_file,"w") as f:
+          for line in output:
+               f.write(line+"\n")
 
 def main():
     input_file = "input.txt"
