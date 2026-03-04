@@ -30,3 +30,15 @@ opcode={
     "auipc":("U",None,None,"0010111"),
     "jal":("J",None,None,"1101111")
 }
+def Binary(num,bits): 
+     num1=int (num)
+     if num1<0:
+          num1=(2**bits)+num
+     B=""
+     while num1>0:
+          rem=num1%2
+          B=str(rem)+B
+          num1=num1//2
+     while len(B)<bits:
+          B="0"+B
+     return B
